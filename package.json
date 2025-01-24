@@ -1,0 +1,51 @@
+{
+  "name": "translate-projects-core",
+  "version": "0.0.1",
+  "description": "Easily globalize your projects",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./utils": "./dist/utils/index.js",
+    "./types": "./dist/utils/index.js"
+  },
+  "typesVersions": {
+    "*": {
+      "utils": [
+        "./dist/utils/index.d.ts"
+      ],
+      "types": [
+        "./dist/types/index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "prebuild": "rm -rf dist"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "typescript": "^5.7.3"
+  },
+  "keywords": [
+    "translate projects core"
+  ],
+  "author": {
+    "name": "Neider Ruiz",
+    "email": "neiderbtc@gmail.com",
+    "url": "http://github.com/neiderruiz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/neiderruiz/translate-projects-core.git"
+  },
+  "bugs": {
+    "url": "http://github.com/neiderruiz/translate-projects-core/issues"
+  },
+  "license": "MIT"
+}

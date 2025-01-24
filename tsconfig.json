@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "./dist",
+    "moduleResolution": "Node16",
+    "module": "Node16"
+  }
+}
