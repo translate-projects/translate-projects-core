@@ -5,3 +5,7 @@ export type TypeSimpleJson = {
 export type TypeJson = {
     [key: string]: any;
 };
+
+export type JsonBase = {
+    [key: string]: string | object;
+}

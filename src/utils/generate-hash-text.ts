@@ -1,15 +1,24 @@
-export const generateHashText = (text: string) => {
-    let hash1 = 0, hash2 = 0;
-    for (let i = 0; i < text.length; i++) {
-        const char = text.charCodeAt(i);
-        hash1 = (hash1 << 5) - hash1 + char;
-        hash1 |= 0;
+// Function to convert a number to Base36
+const base36Encode = (number) => {
+    return number.toString(36);
+}
 
-        hash2 = (hash2 << 7) - hash2 + char;
-        hash2 |= 0;
-    }
-    // combine bits
-    const combinedHash = Math.abs(hash1 + hash2).toString(36);
+// Function to generate the short hash
+export const generateHashText = async (text: string): Promise<string> => {
+    length = 15;
+    // Generate the text hash using SHA-256
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
 
-    return combinedHash;
+    return crypto.subtle.digest("SHA-256", data).then((hashBuffer) => {
+        // Convert the hash to an integer
+        let hashArray = Array.from(new Uint8Array(hashBuffer));
+        let hashInt = BigInt("0x" + hashArray.map(byte => byte.toString(16).padStart(2, '0')).join(''));
+
+        // Convert the integer to Base36
+        let base36Hash = base36Encode(hashInt);
+
+        // Return a shorter portion of the hash
+        return base36Hash.slice(0, length);
+    });
 }
