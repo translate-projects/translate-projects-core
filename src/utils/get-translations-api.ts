@@ -1,11 +1,11 @@
-import { TypeSimpleJson } from "../types/json"
+import { JsonBase, TypeSimpleJson } from "../types/json"
 import { TypeListLang } from "../types/langs"
 import { TypeProject } from "../types/type-project"
 
 type TranslationApiConfig = {
     sourceLang: TypeListLang
     targetLang: TypeListLang
-    data: TypeSimpleJson,
+    data: TypeSimpleJson | JsonBase,
     apiKey?: string
     typeProject: TypeProject
     route_file?: string
@@ -41,7 +41,6 @@ export async function getTranslationsApi({ sourceLang, targetLang, data, apiKey,
         throw new Error(`🛑 ${response.status} - Error getting translations: ${response.statusText} 🛑`);
     }
 
-    const translations = await response.json();
-    return translations;
+    return await response.json();
 }
 
