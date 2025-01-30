@@ -5,7 +5,7 @@ const base36Encode = (number) => {
 
 // Function to generate the short hash
 export const generateHashText = async (text: string): Promise<string> => {
-    length = 15;
+    const length = 15;
     // Generate the text hash using SHA-256
     const encoder = new TextEncoder();
     const data = encoder.encode(text);
