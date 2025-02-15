@@ -1,4 +1,12 @@
-import { getTranslationsApi } from "./utils/get-translations-api";
+import { generateHashText, } from "./utils";
+import { getTranslations, makeTranslations, syncResources, validateChangesFiles } from "./utils/generate-translations";
+
+
 export {
-    getTranslationsApi
+    generateHashText,
+    getTranslations,
+    makeTranslations,
+    syncResources,
+    validateChangesFiles
 };
+
