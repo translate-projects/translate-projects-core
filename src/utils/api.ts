@@ -139,7 +139,7 @@ class Api {
 
     async validateChangesFiles({
         data,
-    }) {
+    }): Promise<ApiResponse<any> | null> {
         return await this.makeRequest<any>("POST", "/v1/translations/validate-changes-files", {}, data);
     }
 }
