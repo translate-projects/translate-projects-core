@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { Logger } from './logger';
 
 export const readJsonFile = (filePath: string) => {
     try {
@@ -6,7 +7,7 @@ export const readJsonFile = (filePath: string) => {
         const jsonContent = JSON.parse(data);
         return jsonContent;
     } catch (error) {
-        console.error(`Error reading JSON file: ${error}`);
+        Logger.error(`Error reading JSON file: ${error}`);
         return null;
     }
 }
