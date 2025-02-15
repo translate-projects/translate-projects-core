@@ -42,10 +42,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/neiderruiz/translate-projects-core.git"
+    "url": "git://github.com/translate-projects/translate-projects-core.git"
   },
   "bugs": {
-    "url": "http://github.com/neiderruiz/translate-projects-core/issues"
+    "url": "http://github.com/translate-projects/translate-projects-core/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@types/chalk": "^2.2.4",
+    "chalk": "^5.4.1",
+    "cli-progress": "^3.12.0",
+    "progress": "^2.0.3",
+    "ws": "^8.18.0"
+  }
 }
