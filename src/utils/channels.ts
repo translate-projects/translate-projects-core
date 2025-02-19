@@ -10,6 +10,9 @@ export const listenProgress = async (taskId: string, callback: (progress: number
         try {
             const data = JSON.parse(event.data);
             const progress = parseFloat(data.progress || "0");
+            if (progress > 100) {
+                websocket.close();
+            }
             callback(progress);
         } catch (error) {
             Logger.error("❌ Error: Failed to decode JSON", error);
