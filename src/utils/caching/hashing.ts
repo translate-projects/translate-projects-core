@@ -1,16 +1,19 @@
 import * as fs from 'fs';
-import { Cache, FileCache, ProjectCache, UpdateCacheParams } from '../../types';
+import { Cache, FileCache, ProjectCache, TypeSimpleJson, UpdateCacheParams } from '../../types';
 import { generateHashText } from '../generate-hash-text';
 import { loadCache, saveCache } from './cache';
 
 /**
  * Processes a file and updates (or checks) its cache information.
  * @param filePath Absolute path of the file.
+ * @param jsonData Json with Data to generate contentHash.
  * @returns Object with content hash, name hash, existence flag, version, sources, and translations.
  */
-export async function processFileHashCache(
-    filePath: string
-): Promise<{
+type ProcessFileHashCacheOptions = {
+    filePath: string,
+    jsonData?: TypeSimpleJson,
+}
+export async function processFileHashCache({ filePath, jsonData }: ProcessFileHashCacheOptions): Promise<{
     contentHash: string;
     nameHash: string;
     exist: boolean;
@@ -25,9 +28,19 @@ export async function processFileHashCache(
         cache[projectHash] = {};
     }
 
-    const nameFileHash = await generateHashText(filePath);
-    const data = fs.readFileSync(filePath, 'utf-8');
-    const contentHash = await generateHashText(data);
+    let nameFileHash: string;
+    let contentHash: string;
+
+    if (!jsonData) {
+        nameFileHash = await generateHashText(filePath);
+        const data = fs.readFileSync(filePath, 'utf-8');
+        contentHash = await generateHashText(data);
+    }
+
+    if (jsonData) {
+        nameFileHash = await generateHashText(filePath);
+        contentHash = await generateHashText(JSON.stringify(jsonData));
+    }
 
     const projectCache = cache[projectHash];
 
