@@ -8,7 +8,7 @@ export const assignHashKeysJson = async (jsonFlatten: any) => {
     // generate key based on text
     let currentKey = await generateHashText(key);
 
-    if (await generateHashText(text) !== currentKey) {
+    if ((await generateHashText(text)) !== currentKey) {
       // if key is not the same as text, add text to key
       currentKey = key;
     }

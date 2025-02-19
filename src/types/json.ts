@@ -1,11 +1,11 @@
 export type TypeSimpleJson = {
-    [key: string]: string;
+  [key: string]: string;
 };
 
 export type TypeJson = {
-    [key: string]: any;
+  [key: string]: any;
 };
 
 export type JsonBase = {
-    [key: string]: string | object;
-}
+  [key: string]: string | object;
+};
