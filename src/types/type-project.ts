@@ -1,1 +1,1 @@
-export type TypeProject = 'docusaurus' | 'next.js' | 'astro' | 'react' | 'json'
+export type TypeProject = 'docusaurus' | 'next.js' | 'astro' | 'react' | 'json';
