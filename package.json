@@ -27,6 +27,12 @@
     "lint:fix": "eslint --fix",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "**/*.{js,ts,json,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
   "files": [
     "dist/",
     "README.md",
