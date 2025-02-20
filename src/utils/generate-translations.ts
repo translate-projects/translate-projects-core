@@ -75,6 +75,9 @@ export const makeTranslations = async ({
 
   await progressBar(data_make.task_id);
 
+  // add ellep 1 second
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   const result = await api.getTranslations({
     target_lang: targetLang,
   });
