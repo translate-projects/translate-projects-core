@@ -1,13 +1,13 @@
 {
   "name": "translate-projects-core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Easily globalize your projects",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./utils": "./dist/utils/index.js",
-    "./types": "./dist/utils/index.js"
+    "./types": "./dist/types/index.js"
   },
   "typesVersions": {
     "*": {
@@ -27,6 +27,12 @@
     "lint:fix": "eslint --fix",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "**/*.{js,ts,json,md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
   "files": [
     "dist/",
     "README.md",
@@ -40,7 +46,9 @@
     "ws": "^8.18.0"
   },
   "devDependencies": {
+    "@types/cli-progress": "^3.11.6",
     "@types/node": "^22.10.10",
+    "@types/ws": "^8.5.14",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
@@ -54,7 +62,7 @@
   ],
   "author": {
     "name": "Neider Ruiz",
-    "email": "neiderbtc@gmail.com",
+    "email": "contact@neiderruiz.com",
     "url": "http://github.com/neiderruiz"
   },
   "repository": {

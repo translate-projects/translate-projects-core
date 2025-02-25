@@ -1,4 +1,4 @@
-import WebSocket from 'ws';
+import WebSocket, { ErrorEvent, MessageEvent } from 'ws';
 import { Logger } from './logger';
 
 export const listenProgress = async (
@@ -11,7 +11,7 @@ export const listenProgress = async (
 
   websocket.onmessage = (event: MessageEvent) => {
     try {
-      const data = JSON.parse(event.data);
+      const data = JSON.parse(event.data.toString());
       const progress = parseFloat(data.progress || '0');
       if (progress > 100) {
         websocket.close();
@@ -22,7 +22,7 @@ export const listenProgress = async (
     }
   };
 
-  websocket.onerror = (error: Event) => {
+  websocket.onerror = (error: ErrorEvent) => {
     Logger.error('❌ Error: WebSocket error', error);
   };
 

@@ -37,8 +37,8 @@ export async function processFileHashCache({
     cache[projectHash] = {};
   }
 
-  let nameFileHash: string;
-  let contentHash: string;
+  let nameFileHash: string = '';
+  let contentHash: string = '';
 
   if (!jsonData) {
     nameFileHash = await generateHashText(filePath);
@@ -51,7 +51,7 @@ export async function processFileHashCache({
     contentHash = await generateHashText(JSON.stringify(jsonData));
   }
 
-  const projectCache = cache[projectHash];
+  const projectCache: ProjectCache = cache[projectHash];
 
   if (
     projectCache[nameFileHash] &&
