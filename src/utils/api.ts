@@ -33,7 +33,7 @@ type SyncSourcesParams = {
   sourceLang: TypeListLang;
   data: TypeSimpleJson | JsonBase;
   typeProject: TypeProject;
-  route_file: string;
+  route_file?: string;
   cache_hash?: string;
 };
 
@@ -159,7 +159,11 @@ class Api {
     );
   }
 
-  async validateChangesFiles({ data }): Promise<ApiResponse<any> | null> {
+  async validateChangesFiles({
+    data,
+  }: {
+    [key: string]: string;
+  }): Promise<ApiResponse<any> | null> {
     return await this.makeRequest<any>(
       'POST',
       '/v1/translations/validate-changes-files',
