@@ -1,5 +1,5 @@
 // Function to convert a number to Base36
-const base36Encode = (number) => {
+const base36Encode = (number: bigint) => {
   return number.toString(36);
 };
 

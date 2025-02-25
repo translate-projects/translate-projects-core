@@ -21,7 +21,7 @@ export const syncResources = async ({
   typeProject,
   route_file,
   cache_hash,
-}: TranslationApiConfig): Promise<ApiResponse<TypeSimpleJson>> => {
+}: TranslationApiConfig): Promise<void | null> => {
   const api = new Api(apiKey);
 
   const response_sync = await api.syncSources({
@@ -82,7 +82,7 @@ export const makeTranslations = async ({
     target_lang: targetLang,
   });
 
-  if (!result.data) {
+  if (!result?.data) {
     await Logger.error('Error fetching translations');
     return null;
   }
@@ -98,14 +98,14 @@ type GetTranslationsApiConfig = {
 export const getTranslations = async ({
   apiKey,
   targetLang,
-}: GetTranslationsApiConfig): Promise<ApiResponse<TypeSimpleJson>> => {
+}: GetTranslationsApiConfig): Promise<ApiResponse<TypeSimpleJson> | null> => {
   const api = new Api(apiKey);
 
   const result = await api.getTranslations({
     target_lang: targetLang,
   });
 
-  if (!result.data) {
+  if (!result?.data) {
     await Logger.error('Error fetching translations');
     return null;
   }
@@ -121,7 +121,7 @@ type ValidateChangesFilesApiConfig = {
 export const validateChangesFiles = async ({
   apiKey,
   data,
-}: ValidateChangesFilesApiConfig): Promise<ApiResponse<TypeSimpleJson>> => {
+}: ValidateChangesFilesApiConfig): Promise<ApiResponse<TypeSimpleJson> | null> => {
   const api = new Api(apiKey);
 
   const response = await api.validateChangesFiles({

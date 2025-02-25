@@ -12,7 +12,7 @@ export const progressBar = async (taskId: string): Promise<void> => {
     const total = 100;
     const progressBar = new cliProgress.SingleBar(
       {
-        format: (options, params, payload) => {
+        format: (options: any, params: any, payload: any) => {
           const completeLength = Math.round(params.progress * options.barsize);
           const incompleteLength = options.barsize - completeLength;
 
