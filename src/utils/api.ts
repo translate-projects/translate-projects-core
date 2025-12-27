@@ -1,7 +1,7 @@
 import { JsonBase, TypeListLang, TypeProject, TypeSimpleJson } from '../types';
 import { Logger } from './logger';
 
-const API_BASE_URL = 'https://translateprojects.dev';
+const API_BASE_URL = 'https://translate.playfut.co';
 
 export type ApiResponse<T> = {
   data?: T;

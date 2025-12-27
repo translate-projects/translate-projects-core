@@ -5,7 +5,7 @@ export const listenProgress = async (
   taskId: string,
   callback: (progress: number) => void
 ): Promise<void> => {
-  const url = `wss://translateprojects.dev/ws/progress/${taskId}/`;
+  const url = `wss://translate.playfut.co/ws/progress/${taskId}/`;
 
   const websocket = new WebSocket(url);
 
